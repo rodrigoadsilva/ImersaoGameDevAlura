@@ -121,10 +121,6 @@ function draw() {
 
     if (character.collision(enemy)) {
         console.log('Colidiu');
-        //noLoop();
+        noLoop();
     }
 }
-
-//function touchStarted() {
-//    getAudioContext().resume();
-//}
