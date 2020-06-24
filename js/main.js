@@ -3,10 +3,13 @@ let bgSound;
 let imageScenario;
 let imageCharacter;
 let imageEnemy;
+let imageGuiSoundOff;
+let imageGuiSoundOn;
 
 let scenario;
 let character;
 let enemy;
+let sound;
 
 const matrizCharacter = [
     [0, 0],
@@ -67,6 +70,8 @@ function preload() {
     imageScenario = loadImage('./assets/images/background/forest.png');
     imageCharacter = loadImage('./assets/images/character/running.png');
     imageEnemy = loadImage('./assets/images/enemys/slime.png');
+    imageGuiSoundOff = loadImage('./assets/images/gui/sound_off.png');
+    imageGuiSoundOn = loadImage('./assets/images/gui/sound_on.png');
     bgSound = loadSound('./assets/sounds/gameTheme.mp3');
 }
 
@@ -81,7 +86,7 @@ function setup() {
     character = new Character(imageCharacter, matrizCharacter, 50, height - 135, 110, 135, 220, 270);
     enemy = new Enemy(imageEnemy, matrizEnemy, width - 52, height - 52, 52, 52, 104, 104);
 
-    bgSound.loop();
+    sound = new Sprites(imageGuiSoundOff, [0, 0], 2, 2, 30, 30, 0, 0);
     frameRate(48); //Comando para limitar a atualização em fps
 }
 
@@ -91,20 +96,35 @@ function keyPressed() {
     }
 }
 
+function mousePressed() {
+    if (sound.mouseClicked()) {
+        if (!bgSound._playing) {
+            bgSound.loop();
+            sound.image = imageGuiSoundOn;
+        } else {
+            sound.image = imageGuiSoundOff;
+            bgSound.pause();
+        }
+    }
+}
+
 function draw() {
     scenario.show();
     scenario.move();
     character.show();
+    character.animation();
     character.gravity();
     enemy.show();
+    enemy.animation();
     enemy.move();
+    sound.show();
 
     if (character.collision(enemy)) {
         console.log('Colidiu');
-        noLoop();
+        //noLoop();
     }
 }
 
-function touchStarted() {
-    getAudioContext().resume();
-}
+//function touchStarted() {
+//    getAudioContext().resume();
+//}

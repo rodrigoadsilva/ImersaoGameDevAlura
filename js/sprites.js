@@ -22,13 +22,19 @@ class Sprites {
             this.matriz[this.currentFrame][1],
             this.spriteWidth,
             this.spriteHeight);
-        this.animation();
     }
 
     animation() {
         this.currentFrame++;
         if (this.currentFrame >= this.matriz.length - 1) {
             this.currentFrame = 0;
+        }
+    }
+
+    mouseClicked() {
+        let d = dist(mouseX, mouseY, this.imageWidth / 2, this.imageHeight / 2);
+        if (d < this.imageWidth / 2) {
+            return true;
         }
     }
 }
