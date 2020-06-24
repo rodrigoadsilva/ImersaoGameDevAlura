@@ -1,4 +1,4 @@
-class Character extends Animation {
+class Character extends Sprites {
     constructor(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight) {
         super(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight);
         this.initialPositionY = height - this.imageHeight;

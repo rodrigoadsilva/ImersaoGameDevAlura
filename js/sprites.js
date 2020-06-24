@@ -1,4 +1,4 @@
-class Animation {
+class Sprites {
     constructor(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight) {
         this.image = image;
         this.matriz = matriz;

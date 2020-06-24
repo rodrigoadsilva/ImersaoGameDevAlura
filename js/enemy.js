@@ -1,4 +1,4 @@
-class Enemy extends Animation {
+class Enemy extends Sprites {
     constructor(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight) {
         super(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight);
         this.velocidade = 5;
