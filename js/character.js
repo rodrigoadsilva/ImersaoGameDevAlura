@@ -4,6 +4,7 @@ class Character extends Sprites {
         this.initialPositionY = height - this.imageHeight;
         this.jumpVelocity = 0;
         this.gravityValue = 1;
+        this.jumpCount = 2;
     }
 
     gravity() {
@@ -12,11 +13,15 @@ class Character extends Sprites {
 
         if (this.positionY > this.initialPositionY) {
             this.positionY = this.initialPositionY;
+            this.jumpCount = 2;
         }
     }
 
     jump() {
-        this.jumpVelocity = -15;
+        if (this.jumpCount >= 1) {
+            this.jumpVelocity = -15;
+            this.jumpCount--;
+        }
     }
 
     collision(enemy) {
