@@ -1,36 +1,37 @@
-class Character {
-    constructor(image) {
-        this.image = image;
-        this.matriz = [
-            [0, 0],
-            [220, 0],
-            [440, 0],
-            [660, 0],
-            [0, 270],
-            [220, 270],
-            [440, 270],
-            [660, 270],
-            [0, 540],
-            [220, 540],
-            [440, 540],
-            [660, 540],
-            [0, 810],
-            [220, 810],
-            [440, 810],
-            [660, 810],
-        ];
-        this.currentFrame = 0;
+class Character extends Animation {
+    constructor(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight) {
+        super(image, matriz, positionX, positionY, imageWidth, imageHeight, spriteWidth, spriteHeight);
+        this.initialPositionY = height - this.imageHeight;
+        this.jumpVelocity = 0;
+        this.gravityValue = 1;
     }
 
-    show() {
-        image(this.image, 110, height - 135, 110, 135, this.matriz[this.currentFrame][0], this.matriz[this.currentFrame][1], 220, 270);
-        this.running();
-    }
+    gravity() {
+        this.positionY += this.jumpVelocity;
+        this.jumpVelocity += this.gravityValue;
 
-    running() {
-        this.currentFrame++;
-        if (this.currentFrame >= this.matriz.length - 1) {
-            this.currentFrame = 0;
+        if (this.positionY > this.initialPositionY) {
+            this.positionY = this.initialPositionY;
         }
     }
+
+    jump() {
+        this.jumpVelocity = -15;
+    }
+
+    collision(enemy) {
+        const precision = 0.7;
+        return collideRectRect(
+            this.positionX,
+            this.positionY,
+            this.imageWidth * precision,
+            this.imageHeight * precision,
+            enemy.positionX,
+            enemy.positionY,
+            enemy.imageWidth * precision,
+            enemy.imageHeight * precision
+        );
+    }
+
+
 }

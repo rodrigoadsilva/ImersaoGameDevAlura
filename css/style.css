@@ -1,7 +1,16 @@
-html, body {
-  margin: 0;
-  padding: 0;
+html,
+body {
+    height: 100%;
 }
-canvas {
-  display: block;
+
+.h-100 {
+    height: 100%;
+}
+
+.h-75 {
+    height: 75%;
+}
+
+.h-50 {
+    height: 50%;
 }

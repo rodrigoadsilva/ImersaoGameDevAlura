@@ -2,17 +2,42 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <title>Aula Alura - ImersãoGameDev_1</title>
 </head>
 
 <body>
-    <script src="js/p5.js"></script>
+
+    <div class="container h-100">
+        <div class="row h-100 valign-wrapper">
+            <div class="col s8 offset-s2 valign-wrapper green lighten-3 z-depth-3 h-75">
+                <div class="container" id="game-container">
+                    <div id="game-screen"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compiled and minified Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Compiled and minified P5 JavaScript -->
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.collide2d.min.js"></script>
     <script src="js/addons/p5.sound.min.js"></script>
+
+    <!-- Game JavaScript -->
     <script src="js/scenario.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/enemy.js"></script>
     <script src="js/character.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
